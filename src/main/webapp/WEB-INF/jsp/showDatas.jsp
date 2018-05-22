@@ -90,11 +90,13 @@
                     <input type="button" value="修改数据" onclick="window.location.href='/ammeter/updateDatas'"/>
                 </li>
                 <li>
-                    <%--<input type="button" value="修改数据" id="updateAmmeterInfo"/>--%>
-                        <form method="post" enctype="multipart/form-data" id="form2" action="/ammeter/User_importXls">
-                            <input type="file" name="file"/>
-                            <input type="submit" value="用户数据上传"/>
-                        </form>
+                    <input type="button" value="所有数据" onclick="window.location.href='/ammeter/showAllDatas'"/>
+                </li>
+                <li>
+                    <form method="post" enctype="multipart/form-data" id="form2" action="/ammeter/User_importXls">
+                        <input type="file" name="file"/>
+                        <input type="submit" value="用户数据上传"/>
+                    </form>
                 </li>
                 <li>
                     <input type="button" value="刷新网页" onclick="javascript: location.reload(true);" />
@@ -135,14 +137,6 @@
                 })
             </script>
 
-            <!--添加数据-->
-            <script type="text/javascript">
-                $(function(){
-                    $("#addAmmeterInfo").click(function(){
-                        $('#addAndUpdateInfoWindow').window('open');
-                    });
-                })
-            </script>
             <!--修改数据-->
             <script type="text/javascript">
                 $(function(){

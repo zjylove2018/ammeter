@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>添加功能界面</title>
+    <title>修改功能界面</title>
     <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../themes/icon.css">
     <script type="text/javascript" src="../../js/jquery.min.js"></script>

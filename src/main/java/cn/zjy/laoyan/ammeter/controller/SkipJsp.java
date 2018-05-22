@@ -13,9 +13,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/ammeter")
 public class SkipJsp {
 
-    @RequestMapping({"/addDatas","/updateDatas"})
-    public String showNewInfo(){
+    @RequestMapping({"/addDatas"})
+    public String toAddDatas(){
 
         return "datasAdd";
+    }
+
+    @RequestMapping({"/updateDatas"})
+    public String toUpdateDatas(){
+
+        return "datasUpdate";
     }
 }

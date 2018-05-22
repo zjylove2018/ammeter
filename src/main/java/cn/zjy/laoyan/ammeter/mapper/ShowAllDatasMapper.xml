@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.zjy.laoyan.ammeter.mapper.ShowAllDatasMapper">
+    <select id="selectSignificanceInfo" resultType="DataInfo">
+        select
+            info_id,cheque_num,worker,modifier_date,item_num,payment_num,
+            ammeter_num,payment_total,isAccount,station_type,
+            agreement_price,area,network_identity,station_num,station_name,
+            machine_room,machine_QR,payment_period,befor_payment_date,last_ammeter_num,
+            now_ammeter_num,reality_report_num,last_check_ammeter,now_check_ammeter,multiple,
+            form_price,finance_price,finance_expend_money,electricity_num_a,electricity_num_b,
+            electricity_num_c,electricity_num_d,electricity_num_price,move_account_money,returned_money_count,
+            gross_margin,ammeter_type,ammeter_discern_num,ammeter_state,station_state,
+            ammeter_address,affiliation_company,rent_company,linkman,phone,
+            gathering_company,machine_room_address,tenement_address,remark,affirm_pact_money,
+            balance_date,contract_date,income_date,is_invoice,contract_num,
+            invoice_type,tax_rate,tax_money,invoice_num,creat_time
+        from
+            ammeter_info
+        GROUP BY
+            creat_time
+        ORDER BY
+            creat_time
+        DESC
+            LIMIT 0,5;
+    </select>
+</mapper>
