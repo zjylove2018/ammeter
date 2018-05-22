@@ -24,7 +24,6 @@ public class ShowNewInfoController {
     private ShowNewInfoService showNewInfoService;
 
     @RequestMapping("/showNewInfo")
-    @ResponseBody
     public String showNewInfo(Model model){
         //要让页面加载完成后显示最近添加的一条数据
         DataInfo dataInfo = showNewInfoService.getNewInfo();

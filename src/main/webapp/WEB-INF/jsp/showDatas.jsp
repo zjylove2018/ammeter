@@ -12,10 +12,9 @@
     <title>主功能界面</title>
     <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="demo.css">
     <script type="text/javascript" src="../../js/jquery.min.js"></script>
     <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="../../locale/easyui-lang-zh_CH.js"></script>
+    <script type="text/javascript" src="../../locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="../../js/showDatas.js"></script>
 
     <!--${pageContext.request.contextPath}-->
@@ -33,6 +32,35 @@
             // 先将addAndEditAmeter表单隐藏，再显示，不会出现页面刷新效果
             $("#addAndEditAmeter").window('close');
         });
+    </script>
+
+    <%--添加新数据-图片添加--%>
+    <script>
+        function uploadPic(){
+            //上传图片 异步的  	Jquery.form.js
+            var options = {
+                url : "/upload/uploadPics.do",
+                type : "post",
+                dataType : "json",
+                success : function(data){
+                    //多图片回显
+                    var html = '<tr>'
+                        + '<td width="20%" class="pn-flabel pn-flabel-h"></td>'
+                        + '<td width="80%" class="pn-fcontent">';
+                    for(var i=0;i<data.length;i++){
+                        html += '<img width="100" height="100" src="' + data[i] + '" />'
+                            +  '<input type="hidden" name="imgUrl" value="' + data[i] + '"/>'
+                    }
+                    html += '<a href="javascript:;" class="pn-opt" onclick="jQuery(this).parents(\'tr\').remove()">删除</a>'
+                        +  '</td>'
+                        +  '</tr>';
+                    //回显
+                    $("#tab_2").append(html);
+
+                }
+            }
+            $("#jvForm").ajaxSubmit(options);
+        }
     </script>
 
 </head>
@@ -56,10 +84,10 @@
                     </form>
                 </li>
                 <li>
-                    <input type="button" value="添加数据" id="addAmmeterInfo"/>
+                    <input type="button" value="添加数据" onclick="window.location.href='/ammeter/addDatas'"/>
                 </li>
                 <li>
-                    <input type="button" value="修改数据" id="updateAmmeterInfo"/>
+                    <input type="button" value="修改数据" onclick="window.location.href='/ammeter/updateDatas'"/>
                 </li>
                 <li>
                     <%--<input type="button" value="修改数据" id="updateAmmeterInfo"/>--%>
@@ -123,23 +151,6 @@
                     });
                 })
             </script>
-
-            <%--页面加载完成后,默认显示数据库最后存进的一条数据--%>
-            <script>
-                $(function(){
-                    $.ajax({
-                        url : '/ammeter/showNewInfo',
-                        type : 'POST',
-                        dataType : 'json',
-                        success : function(data) {
-
-                        },
-                        error : function(msg) {
-                            alert('页面加载时显示数据异常!!!');
-                        }
-                    });
-                 });
-            </script>
         </div>
     </div>
 </div>
@@ -148,14 +159,10 @@
     <!-- 展示折叠面板 fit:自适应填充父容器-->
     <div id="myTabs" class="easyui-tabs" data-options="fit:true">
         <div id="zheshisha" title="最近的数据" data-options="iconCls:'icon-save'">
-
             <!-- 电表数据展示主页面-->
             <table id="ameeterId" class="table-edit" width="80%" align="center">
-
-               <%-- 数据添加页面--%>
-
                 <tr class="title" style="text-align: center">
-                    <td colspan="4" style="color: darkblue"><font size="6">最近添加的表数据详情</font>
+                    <td colspan="8" style="color: darkblue"><font size="6">最近添加的表数据详情</font>
                         <!--提供隐藏域 装载id -->
                         <input type="hidden" name="id" />
                     </td>
@@ -164,205 +171,124 @@
                     <td style="align-content: center">
                         <font size="3" color="orange">电表图片</font>
                     </td>
-                    <td colspan="2">
-                        <font size="3" color="orange">其他数据</font>
+                    <td style="align-content: center">
+                        <font size="3" color="orange">其他信息</font>
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="11">
-                        <input type="image" src="img/login.jpg" width="350px" height="400px"/>
-                    </td>
-                    <td>
-                        ID号
-                    </td>
-                    <td>
-                        <div class="dd">
-                            <span>${product.id }</span>
-                        </div>
-                    </td>
-                    <td>
-                        电表识别号
-                    </td>
-                    <td>
-                        <div class="dd">
-                            <span>${product.id }</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        缴费员
-                    </td>
-                    <td >
-                        <div class="dd">
-                            <span>${product.id }</span>
-                        </div>
-                    </td>
-                    <td>
-                        电表位置
+                    <td rowspan="10" >
+                        <input type="image" src="img/login.jpg" width="300px" height="360px"/>
                     </td>
                     <td colspan="2">
-                        <div class="dd">
-                            <span>${product.id }</span>
-                        </div>
+                        <font color="#006400">数据ID号</font>:<span>${dataInfo.info_id }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">缴费人员</font>:<span>${dataInfo.worker }</span>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        更新日期
+                    <td colspan="2">
+                        <font color="#006400">更新日期</font>:<span>${dataInfo.modifier_date }</span>
                     </td>
-                    <td >
-                        <div class="dd">
-                            <span>${product.id }</span>
-                        </div>
-                    </td>
-                    <td>
-                        甲方联系人
-                    </td>
-                    <td >
-                        <div class="dd">
-                            <span>${product.id }</span>
-                        </div>
+                    <td colspan="2">
+                        <font color="#006400">项目编号</font>:<span>${dataInfo.item_num }</span>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        上期表数
+                    <td colspan="2">
+                        <font color="#006400">电表表数</font>:<span>${dataInfo.ammeter_num }</span>
                     </td>
-                    <td >
-                        <div class="dd">
-                            <span>${product.id }</span>
-                        </div>
-                    </td>
-                    <td>
-                        本期表数
-                    </td>
-                    <td >
-                        <div class="dd">
-                            <span>${product.id }</span>
-                        </div>
+                    <td colspan="2">
+                        <font color="#006400">缴费次数</font>:<span>${dataInfo.payment_total }</span>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <font color="red">报移动用电量</font>
+                    <td colspan="2">
+                        <font color="#006400">移动结算</font>:<span>${dataInfo.isAccount }</span>
                     </td>
-                    <td >
-                        <div class="dd">
-                            <span>${product.id }</span>
-                        </div>
+                    <td colspan="2">
+                        <font color="#006400">基站站名</font>:<span>${dataInfo.machine_room }</span>
                     </td>
-                    <td>
-                        <font color="red">财务支出金额</font>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <font color="#006400">所属机房</font>:<span>${dataInfo.machine_room }</span>
                     </td>
-                    <td >
-                        <div class="dd">
-                            <span>${product.id }</span>
-                        </div>
+                    <td colspan="2">
+                         <font color="red">预交日期</font>:<span>${dataInfo.befor_payment_date }</span>
                     </td>
                 </tr>
                    <tr>
-                       <td>
-                           <font color="red">移动结算金额</font>
+                       <td colspan="2">
+                           <font color="#006400">上期表数</font>:<span>${dataInfo.last_ammeter_num }</span>
                        </td>
-                       <td >
-                           <div class="dd">
-                               <span>${product.id }</span>
-                           </div>
+                       <td colspan="2">
+                           <font color="#006400">本期表数</font>:<span>${dataInfo.now_ammeter_num }</span>
                        </td>
-                       <td>
-                           <font color="red">毛利（国税)</font>
+                   </tr>
+                   <tr>
+                       <td colspan="2">
+                           <font color="#006400">上期查表</font>:<span>${dataInfo.last_check_ammeter }</span>
                        </td>
-                       <td >
-                           <div class="dd">
-                               <span>${product.id }</span>
-                           </div>
+                       <td colspan="2">
+                           <font color="#006400">本期查表</font>: <span>${dataInfo.now_check_ammeter }</span>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td colspan="2">
+                             <font color="red">基础倍率</font>:<span>${dataInfo.multiple }</span>
+                       </td>
+                       <td colspan="2">
+                             <font color="red">抄表单价</font>:<span>${dataInfo.form_price }</span>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td colspan="2">
+                            <font color="red">财务支出</font>: <span>${dataInfo.finance_expend_money }</span>
+                       </td>
+                       <td colspan="2">
+                           <font color="red">移动结算</font>:<span>${dataInfo.move_account_money }</span>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td colspan="2">
+                           <font color="#006400">回款次数</font>:<span>${dataInfo.returned_money_count }</span>
+                       </td>
+                       <td colspan="2">
+                            <font color="red">毛利国税</font>:<span>${dataInfo.gross_margin }</span>
                        </td>
                    </tr>
                    <tr>
                        <td>
-                           <font color="red">倍率</font>
+                           <font color="#006400">表识别号</font>:<span>${dataInfo.info_id }</span>
                        </td>
-                       <td >
-                           <div class="dd">
-                               <span>${product.id }</span>
-                           </div>
+                       <td colspan="2">
+                           <font color="#006400">出租单位</font>: <span>${dataInfo.rent_company }</span>
                        </td>
-                       <td>
-                           <font color="red">抄表单单价</font>
-                       </td>
-                       <td >
-                           <div class="dd">
-                               <span>${product.id }</span>
-                           </div>
+                       <td colspan="2">
+                           <font color="red">报移动电</font>:<span>${dataInfo.ammeter_discern_num }</span>
                        </td>
                    </tr>
                    <tr>
                        <td>
-                           <font color="red">预交费日期</font>
+                           <font color="#006400">甲方人员</font>:<span>${dataInfo.linkman }</span>
                        </td>
-                       <td >
-                           <div class="dd">
-                               <span>${product.id }</span>
-                           </div>
+                       <td colspan="2">
+                           <font color="#006400">收款单位</font>:<span>${dataInfo.gathering_company}</span>
                        </td>
-                       <td>
-                           出租单位名称
-                       </td>
-                       <td >
-                           <div class="dd">
-                               <span>${product.id }</span>
-                           </div>
+                       <td colspan="2">
+                           <font color="#006400">联系方式</font>:<span>${dataInfo.phone }</span>
                        </td>
                    </tr>
                    <tr>
                        <td>
-                           电表数
+                           <font color="#006400">电表地址</font>:<span>${dataInfo.ammeter_address }</span>
                        </td>
-                       <td >
-                           <div class="dd">
-                               <span>bbbbbbb</span>
-                           </div>
+                       <td colspan="2">
+                           <font color="#006400">电表类型</font>:<span>${dataInfo.ammeter_type }</span>
                        </td>
-                       <td>
-                           缴费次数
-                       </td>
-                       <td >
-                           <div class="dd">
-                               <span>aaaaa</span>
-                           </div>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td>
-                           站名
-                       </td>
-                       <td >
-                           <div class="dd">
-                               <span>aaaaa</span>
-                           </div>
-                       </td>
-                       <td>
-                           所属机房
-                       </td>
-                       <td >
-                           <div class="dd">
-                               <span>aaaa</span>
-                           </div>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td>
-                           支票号
-                       </td>
-                       <td >
-                           <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                       </td>
-                       <td>
-                           回款次数
-                       </td>
-                       <td >
-                           <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px"/>
+                       <td colspan="2">
+                           <font color="#006400">详情备注</font>:<span>${dataInfo.remark }</span>
                        </td>
                    </tr>
             </table>
@@ -403,193 +329,7 @@
     </div>
 </div>
 
-<!--添加和修改数据窗口-->
-<div id="addAndUpdateInfoWindow" class="easyui-window" title="新数据添加" collapsible="false" minimizable="false" modal="true" closed="true" resizable="false" maximizable="false" icon="icon-save" style="width: 1200px; height: 600px; padding: 5px;
-        background: #fafafa">
-    <div class="easyui-layout" fit="true">
-        <div region="center" border="false" style="padding: 10px; background: #fff; border: 1px solid #ccc;">
-            <table id="addAndUpdateAmeeterId" class="table-edit" width="80%" align="center" >
 
-                <%-- 数据添加页面--%>
 
-                <tr class="title" style="text-align: center">
-                    <td colspan="4" style="color: darkblue"><font size="6">添加一条新数据</font>
-                        <!--提供隐藏域 装载id -->
-                        <input type="hidden" name="id" />
-                    </td>
-                </tr>
-                <tr >
-                    <td style="align-content: center">
-                        <font size="3" color="orange">电表图片</font>
-                    </td>
-                    <td colspan="2">
-                        <font size="3" color="orange">其他数据</font>
-                    </td>
-                </tr>
-                <tr>
-                    <td rowspan="11">
-                        <input type="image" src="img/login.jpg" width="350px" height="400px"/>
-                    </td>
-                    <td>
-                        ID号
-                    </td>
-                    <td>
-                        <input type="text" name="minWeight" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                    <td>
-                        电表识别号
-                    </td>
-                    <td>
-                        <input type="text" name="minWeight" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        缴费员
-                    </td>
-                    <td >
-                        <input type="text" name="maxWeight" class="easyui-numberbox"  style="width: 150px"/>
-                    </td>
-                    <td>
-                        电表位置
-                    </td>
-                    <td colspan="2">
-                        <input type="text" name="maxWeight" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        更新日期
-                    </td>
-                    <td >
-                        <input type="text" name="minLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                    <td>
-                        甲方联系人
-                    </td>
-                    <td >
-                        <input type="text" name="minLength" class="easyui-numberbox" style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        上期表数
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                    <td>
-                        本期表数
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <font color="red">报移动用电量</font>
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                    <td>
-                        <font color="red">财务支出金额</font>
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <font color="red">移动结算金额</font>
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                    <td>
-                        <font color="red">毛利（国税)</font>
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <font color="red">倍率</font>
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox"  style="width: 150px"/>
-                    </td>
-                    <td>
-                        <font color="red">抄表单单价</font>
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <font color="red">预交费日期</font>
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                    <td>
-                        出租单位名称
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        电表数
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                    <td>
-                        缴费次数
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        站名
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                    </td>
-                    <td>
-                        所属机房
-                    </td>
-                    <td >
-                        <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px"/>
-                    </td>
-                </tr>
-                    <tr>
-                        <td>
-                            支票号
-                        </td>
-                        <td >
-                            <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px" />
-                        </td>
-                        <td>
-                            回款次数
-                        </td>
-                        <td >
-                            <input type="text" name="maxLength" class="easyui-numberbox" style="width: 150px"/>
-                        </td>
-                    </tr>
-            </table>
-        </div>
-        <div region="south" border="false" style="text-align: right; height: 30px; line-height: 30px;">
-            <a id="btnSure" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">确定</a>
-            <a id="btnUnSure" class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">取消</a>
-        </div>
-    </div>
-</div>
 </body>
 </html>
