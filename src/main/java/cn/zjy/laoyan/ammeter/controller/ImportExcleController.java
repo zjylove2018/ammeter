@@ -90,11 +90,11 @@ public class ImportExcleController {
             String info_id = getCellValue(row.getCell(0));
             String cheque_num = getCellValue(row.getCell(1));
             String worker = row.getCell(2).getStringCellValue();
-            Date modifier_date = row.getCell(3).getDateCellValue();
+            String modifier_date = getCellValue(row.getCell(3));
             String item_num = row.getCell(4).getStringCellValue();
 
             String payment_num = row.getCell(5).getStringCellValue();
-            Integer ammeter_num = row.getCell(6).getCellType();
+            String ammeter_num = getCellValue(row.getCell(6));
             String payment_total = getCellValue(row.getCell(7));
             String isAccount = row.getCell(8).getStringCellValue();
             String station_type = row.getCell(9).getStringCellValue();
@@ -102,7 +102,7 @@ public class ImportExcleController {
             String agreement_price = getCellValue(row.getCell(10));
             String area = row.getCell(11).getStringCellValue();
             String network_identity = row.getCell(12).getStringCellValue();
-            Integer station_num = row.getCell(13).getCellType();
+            String station_num = getCellValue(row.getCell(13));
             String station_name = row.getCell(14).getStringCellValue();
 
             String machine_room = row.getCell(15).getStringCellValue();
@@ -113,8 +113,8 @@ public class ImportExcleController {
 
             Double now_ammeter_num = row.getCell(20).getNumericCellValue();
             Double reality_report_num = row.getCell(21).getNumericCellValue();
-            Date last_check_ammeter = row.getCell(22).getDateCellValue();
-            Date now_check_ammeter = row.getCell(23).getDateCellValue();
+            String last_check_ammeter = getCellValue(row.getCell(22));
+            String now_check_ammeter = getCellValue(row.getCell(23));
             Double multiple = row.getCell(24).getNumericCellValue();
 
             Double form_price = row.getCell(25).getNumericCellValue();
@@ -139,7 +139,7 @@ public class ImportExcleController {
             String affiliation_company = row.getCell(41).getStringCellValue();
             String rent_company = row.getCell(42).getStringCellValue();
             String linkman = row.getCell(43).getStringCellValue();
-            Integer phone = row.getCell(44).getCellType();
+            String phone = getCellValue(row.getCell(44));
 
             String gathering_company = row.getCell(45).getStringCellValue();
             String machine_room_address = row.getCell(46).getStringCellValue();
@@ -147,9 +147,9 @@ public class ImportExcleController {
             String remark = row.getCell(48).getStringCellValue();
             String affirm_pact_money = row.getCell(49).getStringCellValue();
 
-            Date balance_date = row.getCell(50).getDateCellValue();
-            Date contract_date = row.getCell(51).getDateCellValue();
-            Date income_date = row.getCell(52).getDateCellValue();
+            String balance_date = getCellValue(row.getCell(50));
+            String contract_date = getCellValue(row.getCell(51));
+            String income_date = getCellValue(row.getCell(52));
             String is_invoice = getCellValue(row.getCell(53));
             String contract_num = row.getCell(54).getStringCellValue();
 

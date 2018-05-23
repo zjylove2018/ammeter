@@ -1,11 +1,16 @@
 package cn.zjy.laoyan.ammeter.controller;
 
 import cn.zjy.laoyan.ammeter.pojo.DataInfo;
+import cn.zjy.laoyan.ammeter.service.AddAndUpdateDatasService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.validation.Valid;
 
 /*
  * @author dayong
@@ -15,18 +20,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/ammeter")
 public class AddAndUpdateDatasController{
 
+    @Autowired
+    private AddAndUpdateDatasService addAndUpdateDatasService;
+
     //添加新数据的页面
     @RequestMapping("/addAmmeterInfo")
-    public String addNewDate() {
-        //要让页面加载完成后显示最近添加的一条数据
-        System.out.print(1222222);
-        return "";
+    public String addNewDate(@Valid DataInfo dataInfo) {
+
+        //添加一条新数据
+        addAndUpdateDatasService.insertOneData(dataInfo);
+        System.out.print(dataInfo);
+        return "showDatas";
     }
 
     //修改数据的页面
     @RequestMapping("/updateAmmeterInfo")
     public String updateDate(){
-        //要让页面加载完成后显示最近添加的一条数据
+        //
 
         return "";
     }

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.zjy.laoyan.ammeter.mapper.AddAndUpdateDatasMapper">
+    <insert id="insertOneData" parameterType="DataInfo">
+        insert into ammeter_info
+            <trim prefix="(" suffix=")" suffixOverrides="," >
+                <if test="DataInfo.info_id != null">
+                    info_id,
+                </if>
+                <if test="DataInfo.cheque_num != null">
+                    cheque_num,
+                </if>
+                <if test="DataInfo.worker != null">
+                    worker,
+                </if>
+                <if test="DataInfo.modifier_date != null">
+                    modifier_date,
+                </if>
+                <if test="DataInfo.item_num != null">
+                    item_num,
+                </if>
+
+                <if test="DataInfo.payment_num != null">
+                    `payment_num`,
+                </if>
+                <if test="DataInfo.ammeter_num != null">
+                    ammeter_num,
+                </if>
+                <if test="DataInfo.payment_total != null">
+                    payment_total,
+                </if>
+                <if test="DataInfo.isAccount != null">
+                    isAccount,
+                </if>
+                <if test="DataInfo.station_type != null">
+                    station_type,
+                </if>
+
+                <if test="DataInfo.agreement_price != null">
+                    `agreement_price`,
+                </if>
+                <if test="DataInfo.area != null">
+                    area,
+                </if>
+                <if test="DataInfo.network_identity != null">
+                    network_identity,
+                </if>
+                <if test="DataInfo.station_num != null">
+                    station_num,
+                </if>
+                <if test="DataInfo.station_name != null">
+                    station_name,
+                </if>
+
+                <if test="DataInfo.machine_room != null">
+                    `machine_room`,
+                </if>
+                <if test="DataInfo.ammeter_num != null">
+                    ammeter_num,
+                </if>
+                <if test="DataInfo.machine_QR != null">
+                    machine_QR,
+                </if>
+                <if test="DataInfo.payment_period != null">
+                    payment_period,
+                </if>
+                <if test="DataInfo.befor_payment_date != null">
+                    befor_payment_date,
+                </if>
+
+                <if test="DataInfo.last_ammeter_num != null">
+                    `last_ammeter_num`,
+                </if>
+                <if test="DataInfo.now_ammeter_num != null">
+                    now_ammeter_num,
+                </if>
+                <if test="DataInfo.reality_report_num != null">
+                    reality_report_num,
+                </if>
+                <if test="DataInfo.last_check_ammeter != null">
+                    last_check_ammeter,
+                </if>
+                <if test="DataInfo.now_check_ammeter != null">
+                    now_check_ammeter,
+                </if>
+
+                <if test="DataInfo.multiple != null">
+                    `multiple`,
+                </if>
+                <if test="DataInfo.form_price != null">
+                    form_price,
+                </if>
+                <if test="DataInfo.finance_price != null">
+                    finance_price,
+                </if>
+                <if test="DataInfo.finance_expend_money != null">
+                    finance_expend_money,
+                </if>
+                <if test="DataInfo.electricity_num_a != null">
+                    electricity_num_a,
+                </if>
+
+                <if test="DataInfo.electricity_num_b != null">
+                    `electricity_num_b`,
+                </if>
+                <if test="DataInfo.electricity_num_c != null">
+                    electricity_num_c,
+                </if>
+                <if test="DataInfo.electricity_num_d != null">
+                    electricity_num_d,
+                </if>
+                <if test="DataInfo.electricity_num_price != null">
+                    electricity_num_price,
+                </if>
+                <if test="DataInfo.move_account_money != null">
+                    move_account_money,
+                </if>
+
+                <if test="DataInfo.returned_money_count != null">
+                    `returned_money_count`,
+                </if>
+                <if test="DataInfo.gross_margin != null">
+                    gross_margin,
+                </if>
+                <if test="DataInfo.ammeter_type != null">
+                    ammeter_type,
+                </if>
+                <if test="DataInfo.ammeter_discern_num != null">
+                    ammeter_discern_num,
+                </if>
+                <if test="DataInfo.ammeter_state != null">
+                    ammeter_state,
+                </if>
+
+                <if test="DataInfo.station_state != null">
+                    `station_state`,
+                </if>
+                <if test="DataInfo.ammeter_address != null">
+                    ammeter_address,
+                </if>
+                <if test="DataInfo.affiliation_company != null">
+                    affiliation_company,
+                </if>
+                <if test="DataInfo.isAccount != null">
+                    isAccount,
+                </if>
+                <if test="DataInfo.rent_company != null">
+                    rent_company,
+                </if>
+
+                <if test="DataInfo.linkman != null">
+                    `linkman`,
+                </if>
+                <if test="DataInfo.phone != null">
+                    phone,
+                </if>
+                <if test="DataInfo.gathering_company != null">
+                    gathering_company,
+                </if>
+                <if test="DataInfo.machine_room_address != null">
+                    machine_room_address,
+                </if>
+                <if test="DataInfo.tenement_address != null">
+                    tenement_address,
+                </if>
+
+                <if test="DataInfo.remark != null">
+                    remark,
+                </if>
+                <if test="DataInfo.affirm_pact_money != null">
+                    `affirm_pact_money`,
+                </if>
+                <if test="DataInfo.balance_date != null">
+                    balance_date,
+                </if>
+                <if test="DataInfo.contract_date != null">
+                    contract_date,
+                </if>
+                <if test="DataInfo.income_date != null">
+                    income_date,
+                </if>
+
+                <if test="DataInfo.is_invoice != null">
+                    is_invoice,
+                </if>
+                <if test="DataInfo.contract_num != null">
+                    `contract_num`,
+                </if>
+                <if test="DataInfo.invoice_type != null">
+                    invoice_type,
+                </if>
+                <if test="DataInfo.tax_rate != null">
+                    tax_rate,
+                </if>
+                <if test="DataInfo.tax_money != null">
+                    tax_money,
+                </if>
+                <if test="DataInfo.invoice_num != null">
+                    invoice_num
+                </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides="," >
+                <if test="DataInfo.info_id != null">
+                    #{DataInfo.info_id,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.cheque_num != null">
+                    #{DataInfo.cheque_num,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.worker != null">
+                    #{DataInfo.worker,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.modifier_date != null">
+                    #{DataInfo.modifier_date,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.item_num != null">
+                    #{DataInfo.item_num,jdbcType=VARCHAR},
+                </if>
+
+                <if test="DataInfo.payment_num != null">
+                    #{DataInfo.payment_num,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.ammeter_num != null">
+                    #{DataInfo.ammeter_num,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.payment_total != null">
+                    #{DataInfo.payment_total,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.isAccount != null">
+                    #{DataInfo.isAccount,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.station_type != null">
+                    #{DataInfo.station_type,jdbcType=VARCHAR},
+                </if>
+
+                <if test="DataInfo.agreement_price != null">
+                    #{DataInfo.agreement_price,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.area != null">
+                    #{DataInfo.area,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.network_identity != null">
+                    #{DataInfo.network_identity,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.station_num != null">
+                    #{DataInfo.station_num,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.station_name != null">
+                    #{DataInfo.station_name,jdbcType=VARCHAR},
+                </if>
+
+                <if test="DataInfo.machine_room != null">
+                    #{DataInfo.machine_room,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.machine_QR != null">
+                    #{DataInfo.machine_QR,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.payment_period != null">
+                    #{DataInfo.payment_period,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.befor_payment_date != null">
+                    #{DataInfo.befor_payment_date,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.last_ammeter_num != null">
+                    #{DataInfo.last_ammeter_num,jdbcType=VARCHAR},
+                </if>
+
+                <if test="DataInfo.now_ammeter_num != null">
+                    #{DataInfo.now_ammeter_num,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.reality_report_num != null">
+                    #{DataInfo.reality_report_num,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.last_check_ammeter != null">
+                    #{DataInfo.last_check_ammeter,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.now_check_ammeter != null">
+                    #{DataInfo.now_check_ammeter,jdbcType=VARCHAR},
+                </if>
+                <if test="DataInfo.multiple != null">
+                    #{DataInfo.multiple,jdbcType=DOUBLE},
+                </if>
+
+                <if test="DataInfo.form_price != null">
+                    #{DataInfo.form_price,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.finance_price != null">
+                    #{DataInfo.finance_price,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.finance_expend_money != null">
+                    #{DataInfo.finance_expend_money,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.electricity_num_a != null">
+                    #{DataInfo.electricity_num_a,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.electricity_num_b != null">
+                    #{DataInfo.electricity_num_b,jdbcType=DOUBLE},
+                </if>
+
+                <if test="DataInfo.electricity_num_c != null">
+                    #{DataInfo.electricity_num_c,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.electricity_num_d != null">
+                    #{DataInfo.electricity_num_d,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.electricity_num_price != null">
+                    #{DataInfo.electricity_num_price,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.move_account_money != null">
+                    #{DataInfo.move_account_money,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.returned_money_count != null">
+                    #{DataInfo.returned_money_count,jdbcType=WARCHAR},
+                </if>
+
+                <if test="DataInfo.gross_margin != null">
+                    #{DataInfo.gross_margin,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.ammeter_type != null">
+                    #{DataInfo.ammeter_type,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.ammeter_discern_num != null">
+                    #{DataInfo.ammeter_discern_num,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.ammeter_state != null">
+                    #{DataInfo.ammeter_state,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.station_state != null">
+                    #{DataInfo.station_state,jdbcType=WARCHAR},
+                </if>
+
+                <if test="DataInfo.ammeter_address != null">
+                    #{DataInfo.ammeter_address,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.affiliation_company != null">
+                    #{DataInfo.affiliation_company,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.rent_company != null">
+                    #{DataInfo.rent_company,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.linkman != null">
+                    #{DataInfo.linkman,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.phone != null">
+                    #{DataInfo.phone,jdbcType=WARCHAR},
+                </if>
+
+                <if test="DataInfo.gathering_company != null">
+                    #{DataInfo.gathering_company,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.machine_room_address != null">
+                    #{DataInfo.machine_room_address,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.tenement_address != null">
+                    #{DataInfo.tenement_address,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.remark != null">
+                    #{DataInfo.remark,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.affirm_pact_money != null">
+                    #{DataInfo.affirm_pact_money,jdbcType=WARCHAR},
+                </if>
+
+                <if test="DataInfo.balance_date != null">
+                    #{DataInfo.balance_date,jdbcType=DATE},
+                </if>
+                <if test="DataInfo.contract_date != null">
+                    #{DataInfo.contract_date,jdbcType=DATE},
+                </if>
+                <if test="DataInfo.income_date != null">
+                    #{DataInfo.income_date,jdbcType=DATE},
+                </if>
+                <if test="DataInfo.is_invoice != null">
+                    #{DataInfo.is_invoice,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.contract_num != null">
+                    #{DataInfo.contract_num,jdbcType=WARCHAR},
+                </if>
+
+                <if test="DataInfo.invoice_type != null">
+                    #{DataInfo.invoice_type,jdbcType=WARCHAR},
+                </if>
+                <if test="DataInfo.tax_rate != null">
+                    #{DataInfo.tax_rate,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.tax_money != null">
+                    #{DataInfo.tax_money,jdbcType=DOUBLE},
+                </if>
+                <if test="DataInfo.invoice_num != null">
+                    #{DataInfo.invoice_num,jdbcType=WARCHAR}
+                </if>
+                <if test="DataInfo.invoice_num != null">
+                    #{DataInfo.creat_time,jdbcType=WARCHAR}
+                </if>
+            </trim>
+    </insert>
+</mapper>

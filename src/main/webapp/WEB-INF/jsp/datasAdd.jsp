@@ -79,139 +79,139 @@
     <div id="myTabs" class="easyui-tabs" data-options="fit:true">
         <div id="zheshisha" title="最近的数据" data-options="iconCls:'icon-save'">
             <!-- 电表数据展示主页面-->
-            <form id="jvForm" action="/ammeter/addAmmeterInfo" method="post" enctype="multipart/form-data">
+            <form id="jvForm" action="/ammeter/addAmmeterInfo" method="post" >
                 <table id="ameeterId" class="table-edit" width="80%" align="center">
-                <tr class="title" style="text-align: center">
-                    <td colspan="8" style="color: darkblue"><font size="6">添加新的表数据</font>
-                        <!--提供隐藏域 装载id -->
-                        <input type="hidden" name="id" />
-                    </td>
-                </tr>
-                <tr >
-                    <td style="align-content: center">
-                        <font size="3" color="orange">电表图片</font>
-                    </td>
-                    <td style="align-content: center">
-                        <font size="3" color="orange">其他信息</font>
-                    </td>
-                </tr>
-                <tr>
-                    <td rowspan="10" >
-                        <input type="file" onchange="uploadPic()" name="pics" multiple="multiple" width="300px" height="360px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">数据ID号</font>:<input type="text" name="info_id" class="easyui -textbox" style="width: 150px" />
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">缴费人员</font>:<input type="text" name="worker" class="easyui -textbox" style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <font color="#006400">更新日期</font>:<input id="dd" type="date" name="modifier_date" class="easyui-datebox" style="width: 150px" >
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">项目编号</font>:<input type="text" name="item_num" class="easyui -textbox"  style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <font color="#006400">电表表数</font>:<input type="text" name="ammeter_num" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">缴费次数</font>:<input type="text" name="payment_total" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <font color="#006400">移动结算</font>:<input type="text" name="move_account_money" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">基站站名</font>:<input type="text" name="station_name" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <font color="#006400">所属机房</font>:<input type="text" name="machine_room" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="red">预交日期</font>:<input type="date" name="befor_payment_date" class="easyui-datebox" style="width: 150px" >
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <font color="#006400">上期表数</font>:<input type="text" name="last_ammeter_num" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">本期表数</font>:<input type="text" name="now_ammeter_num" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <font color="#006400">上期查表</font>:<input type="date" name="last_check_ammeter" class="easyui-datebox" style="width: 150px" >
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">现查表日</font>:<input type="date" name="now_check_ammeter" class="easyui-datebox" style="width: 150px" >
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <font color="red">基础倍率</font>:<input type="text" name="multiple" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="red">抄表单价</font>:<input type="text" name="form_price" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <font color="red">财务支出</font>:<input type="text" name="finance_expend_money" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="red">移动结算</font>:<input type="text" name="move_account_money" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <font color="#006400">回款次数</font>:<input type="text" name="returned_money_count" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="red">毛利国税</font>:<input type="text" name="gross_margin" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <font color="#006400">表识别号</font>:<input type="text" name="ammeter_discern_num" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">出租单位</font>:<input type="text" name="rent_company" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="red">报移动电</font>:<input type="text" name="reality_report_num" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <font color="#006400">甲方人员</font>:<input type="text" name="linkman" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">收款单位</font>:<input type="text" name="gathering_company" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">联系方式</font>:<input type="text" name="phone" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <font color="#006400">电表地址</font>:<input type="text" name="ammeter_address" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">电表类型</font>:<input type="text" name="ammeter_type" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                    <td colspan="2">
-                        <font color="#006400">详情备注</font>:<input type="text" name="remark" class="easyui-textbox"  style="width: 150px"/>
-                    </td>
-                </tr>
-            </table>
+                    <tr class="title" style="text-align: center">
+                        <td colspan="8" style="color: darkblue"><font size="6">添加新的表数据</font>
+                            <!--提供隐藏域 装载id -->
+                            <input type="hidden" name="id" />
+                        </td>
+                    </tr>
+                    <tr >
+                        <td style="align-content: center">
+                            <font size="3" color="orange">电表图片</font>
+                        </td>
+                        <td style="align-content: center">
+                            <font size="3" color="orange">其他信息</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="10" >
+                            <%--<input type="file" onchange="uploadPic()" name="pics" multiple="multiple" width="300px" height="360px"/>--%>
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">数据ID号</font>:<input type="text" name="info_id" class="easyui-textbox" style="width: 150px" />
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">缴费人员</font>:<input type="text" name="worker" class="easyui-textbox" style="width: 150px"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <font color="#006400">更新日期</font>:<input id="dd" type="text" name="modifier_date" class="easyui-datebox" style="width: 150px">
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">项目编号</font>:<input type="text" name="item_num" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <font color="#006400">电表表数</font>:<input type="text" name="ammeter_num" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">缴费次数</font>:<input type="text" name="payment_total" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <font color="#006400">移动结算</font>:<input type="text" name="move_account_money" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">基站站名</font>:<input type="text" name="station_name" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <font color="#006400">所属机房</font>:<input type="text" name="machine_room" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="red">预交日期</font>:<input type="text" name="befor_payment_date" class="easyui-datebox" style="width: 150px" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <font color="#006400">上期表数</font>:<input type="text" name="last_ammeter_num" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">本期表数</font>:<input type="text" name="now_ammeter_num" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <font color="#006400">上期查表</font>:<input type="text" name="last_check_ammeter" class="easyui-datebox" style="width: 150px" >
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">现查表日</font>:<input type="text" name="now_check_ammeter" class="easyui-datebox" style="width: 150px" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <font color="red">基础倍率</font>:<input type="text" name="multiple" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="red">抄表单价</font>:<input type="text" name="form_price" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <font color="red">财务支出</font>:<input type="text" name="finance_expend_money" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="red">移动结算</font>:<input type="text" name="move_account_money" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <font color="#006400">回款次数</font>:<input type="text" name="returned_money_count" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="red">毛利国税</font>:<input type="text" name="gross_margin" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <font color="#006400">表识别号</font>:<input type="text" name="ammeter_discern_num" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">出租单位</font>:<input type="text" name="rent_company" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="red">报移动电</font>:<input type="text" name="reality_report_num" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <font color="#006400">甲方人员</font>:<input type="text" name="linkman" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">收款单位</font>:<input type="text" name="gathering_company" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">联系方式</font>:<input type="text" name="phone" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <font color="#006400">电表地址</font>:<input type="text" name="ammeter_address" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">电表类型</font>:<input type="text" name="ammeter_type" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                        <td colspan="2">
+                            <font color="#006400">详情备注</font>:<input type="text" name="remark" class="easyui-textbox"  style="width: 150px"/>
+                        </td>
+                    </tr>
+                </table>
                 <div region="south" border="false" style="text-align: right; height: 30px; line-height: 30px;">
                     <input type="submit" class="submit" value="提交"/> &nbsp; &nbsp; &nbsp; &nbsp; <input type="reset" class="reset" value="重置"/>
                 </div>

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -139,9 +140,9 @@
                     </tr>
                     </thead>
                     <tbody class="pn-ltbody">
-                    <c:forEach items="${dataInfoList }" var="brand">
+                    <c:forEach items="${dataInfoList }" var="brand" >
                         <tr bgcolor="#ffffff" onmouseout="this.bgColor='#ffffff'" onmouseover="this.bgColor='#eeeeee'">
-                            <td><input type="checkbox" value="${brand.id }" name="ids"/></td>
+                            <td><input type="checkbox" value="${brand.info_id }" name="ids"/></td>
                             <td align="center">${brand.befor_payment_date } </td>
                             <td align="center">${brand.reality_report_num } </td>
                             <%--<td align="center"><img width="40" height="40" src="${brand.imgUrl }"/></td>--%>
@@ -153,9 +154,9 @@
                             </td>--%>
                             <td align="center">${brand.finance_expend_money } </td>
                             <td align="center">${brand.move_account_money } </td>
-                            <td align="center">${brand.gross_margin } </td>
+                            <td align="center">${brand. gross_margin } </td>
                             <td align="center">
-                                <a class="pn-opt" href="/brand/toEdit.do?id=${brand.id }">更多..</a> | <a class="pn-opt" href="/brand/toEdit.do?id=${brand.id }">修改</a> | <a class="pn-opt" onclick="if(!confirm('您确定删除吗？')) {return false;}" href="/brand/deleteBrandById.do?id=${brand.id }">删除</a>
+                                <a class="pn-opt" href="/brand/toEdit.do?id=${brand.info_id }">更多..</a> | <a class="pn-opt" href="/brand/toEdit.do?id=${brand.info_id }">修改</a> | <a class="pn-opt" onclick="if(!confirm('您确定删除吗？')) {return false;}" href="/brand/deleteBrandById.do?id=${brand.info_id }">删除</a>
                             </td>
                         </tr>
                     </c:forEach>

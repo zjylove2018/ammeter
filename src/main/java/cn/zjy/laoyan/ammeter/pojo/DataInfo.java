@@ -1,5 +1,6 @@
 package cn.zjy.laoyan.ammeter.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -75,7 +76,7 @@ import java.util.Date;
  *   `tax_money` DOUBLE DEFAULT NULL,
  *   `invoice_num` VARCHAR(50) DEFAULT NULL,
  */
-public class DataInfo {
+public class DataInfo implements Serializable {
 
     //数据ID
     private String info_id;
@@ -87,7 +88,7 @@ public class DataInfo {
     private String worker;
 
     //更新日期
-    private Date modifier_date;
+    private String modifier_date;
 
     //项目编号
     private String item_num;
@@ -96,7 +97,7 @@ public class DataInfo {
     private String payment_num;
 
     //电表数
-    private Integer ammeter_num;
+    private String ammeter_num;
 
     //缴费次数
     private String payment_total;
@@ -117,7 +118,7 @@ public class DataInfo {
     private String network_identity;
 
     //站号
-    private Integer station_num;
+    private String station_num;
 
     //站名
     private String station_name;
@@ -144,10 +145,10 @@ public class DataInfo {
     private Double reality_report_num;
 
     //上期查表日期
-    private Date last_check_ammeter;
+    private String last_check_ammeter;
 
     //本期查表日期
-    private Date now_check_ammeter;
+    private String now_check_ammeter;
 
     //倍率
     private Double multiple;
@@ -210,7 +211,7 @@ public class DataInfo {
     private String linkman;
 
     //联系方式
-    private Integer phone;
+    private String phone;
 
     //实际收款单位
     private String gathering_company;
@@ -228,13 +229,13 @@ public class DataInfo {
     private String affirm_pact_money;
 
     //结算日期
-    private Date balance_date;
+    private String balance_date;
 
     //确认合同时间
-    private Date contract_date;
+    private String contract_date;
 
     //确认收入时间
-    private Date income_date;
+    private String income_date;
 
     //是否有发票
     private String is_invoice;
@@ -283,11 +284,11 @@ public class DataInfo {
         this.worker = worker;
     }
 
-    public Date getModifier_date() {
+    public String getModifier_date() {
         return modifier_date;
     }
 
-    public void setModifier_date(Date modifier_date) {
+    public void setModifier_date(String modifier_date) {
         this.modifier_date = modifier_date;
     }
 
@@ -307,11 +308,11 @@ public class DataInfo {
         this.payment_num = payment_num;
     }
 
-    public Integer getAmmeter_num() {
+    public String getAmmeter_num() {
         return ammeter_num;
     }
 
-    public void setAmmeter_num(Integer ammeter_num) {
+    public void setAmmeter_num(String ammeter_num) {
         this.ammeter_num = ammeter_num;
     }
 
@@ -363,11 +364,11 @@ public class DataInfo {
         this.network_identity = network_identity;
     }
 
-    public Integer getStation_num() {
+    public String getStation_num() {
         return station_num;
     }
 
-    public void setStation_num(Integer station_num) {
+    public void setStation_num(String station_num) {
         this.station_num = station_num;
     }
 
@@ -435,19 +436,19 @@ public class DataInfo {
         this.reality_report_num = reality_report_num;
     }
 
-    public Date getLast_check_ammeter() {
+    public String getLast_check_ammeter() {
         return last_check_ammeter;
     }
 
-    public void setLast_check_ammeter(Date last_check_ammeter) {
+    public void setLast_check_ammeter(String last_check_ammeter) {
         this.last_check_ammeter = last_check_ammeter;
     }
 
-    public Date getNow_check_ammeter() {
+    public String getNow_check_ammeter() {
         return now_check_ammeter;
     }
 
-    public void setNow_check_ammeter(Date now_check_ammeter) {
+    public void setNow_check_ammeter(String now_check_ammeter) {
         this.now_check_ammeter = now_check_ammeter;
     }
 
@@ -611,11 +612,11 @@ public class DataInfo {
         this.linkman = linkman;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -659,27 +660,27 @@ public class DataInfo {
         this.affirm_pact_money = affirm_pact_money;
     }
 
-    public Date getBalance_date() {
+    public String getBalance_date() {
         return balance_date;
     }
 
-    public void setBalance_date(Date balance_date) {
+    public void setBalance_date(String balance_date) {
         this.balance_date = balance_date;
     }
 
-    public Date getContract_date() {
+    public String getContract_date() {
         return contract_date;
     }
 
-    public void setContract_date(Date contract_date) {
+    public void setContract_date(String contract_date) {
         this.contract_date = contract_date;
     }
 
-    public Date getIncome_date() {
+    public String getIncome_date() {
         return income_date;
     }
 
-    public void setIncome_date(Date income_date) {
+    public void setIncome_date(String income_date) {
         this.income_date = income_date;
     }
 
@@ -743,7 +744,7 @@ public class DataInfo {
 
     }
 
-    public DataInfo(String info_id, String cheque_num, String worker, Date modifier_date, String item_num, String payment_num, Integer ammeter_num, String payment_total, String isAccount, String station_type, String agreement_price, String area, String network_identity, Integer station_num, String station_name, String machine_room, String machine_QR, String payment_period, String befor_payment_date, String last_ammeter_num, Double now_ammeter_num, Double reality_report_num, Date last_check_ammeter, Date now_check_ammeter, Double multiple, Double form_price, Double finance_price, Double finance_expend_money, Double electricity_num_a, Double electricity_num_b, Double electricity_num_c, Integer electricity_num_d, Double electricity_num_price, Double move_account_money, String returned_money_count, Double gross_margin, String ammeter_type, String ammeter_discern_num, String ammeter_state, String station_state, String ammeter_address, String affiliation_company, String rent_company, String linkman, Integer phone, String gathering_company, String machine_room_address, String tenement_address, String remark, String affirm_pact_money, Date balance_date, Date contract_date, Date income_date, String is_invoice, String contract_num, String invoice_type, Double tax_rate, Double tax_money, String invoice_num, String creat_time) {
+    public DataInfo(String info_id, String cheque_num, String worker, String modifier_date, String item_num, String payment_num, String ammeter_num, String payment_total, String isAccount, String station_type, String agreement_price, String area, String network_identity, String station_num, String station_name, String machine_room, String machine_QR, String payment_period, String befor_payment_date, String last_ammeter_num, Double now_ammeter_num, Double reality_report_num, String last_check_ammeter, String now_check_ammeter, Double multiple, Double form_price, Double finance_price, Double finance_expend_money, Double electricity_num_a, Double electricity_num_b, Double electricity_num_c, Integer electricity_num_d, Double electricity_num_price, Double move_account_money, String returned_money_count, Double gross_margin, String ammeter_type, String ammeter_discern_num, String ammeter_state, String station_state, String ammeter_address, String affiliation_company, String rent_company, String linkman, String phone, String gathering_company, String machine_room_address, String tenement_address, String remark, String affirm_pact_money, String balance_date, String contract_date, String income_date, String is_invoice, String contract_num, String invoice_type, Double tax_rate, Double tax_money, String invoice_num, String creat_time) {
         this.info_id = info_id;
         this.cheque_num = cheque_num;
         this.worker = worker;
@@ -809,7 +810,7 @@ public class DataInfo {
     @Override
     public String toString() {
         return "DataInfo{" +
-                "info_id='" + info_id + '\'' +
+                "  info_id='" + info_id + '\'' +
                 ", cheque_num='" + cheque_num + '\'' +
                 ", worker='" + worker + '\'' +
                 ", modifier_date=" + modifier_date +
