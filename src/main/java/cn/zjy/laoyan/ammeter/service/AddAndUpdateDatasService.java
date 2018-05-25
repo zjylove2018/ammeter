@@ -8,6 +8,6 @@ import cn.zjy.laoyan.ammeter.pojo.DataInfo;
  */
 public interface AddAndUpdateDatasService {
 
-    //添加一条新数据
-    void insertOneData(DataInfo dataInfo);
+    //更改页面最后添加的新数据
+    void updateOneData(DataInfo dataInfo);
 }

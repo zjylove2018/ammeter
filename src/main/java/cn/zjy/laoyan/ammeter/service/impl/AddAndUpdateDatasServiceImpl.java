@@ -15,9 +15,9 @@ public class AddAndUpdateDatasServiceImpl implements AddAndUpdateDatasService {
     @Autowired
     private AddAndUpdateDatasMapper addAndUpdateDatasMapper;
 
-    //添加一条新数据
+    //更改页面显示的最新数据
     @Override
-    public void insertOneData(DataInfo dataInfo) {
-        addAndUpdateDatasMapper.insertOneData(dataInfo);
+    public void updateOneData(DataInfo dataInfo) {
+        addAndUpdateDatasMapper.updateOneData(dataInfo);
     }
 }

@@ -23,18 +23,18 @@ public class AddAndUpdateDatasController{
     @Autowired
     private AddAndUpdateDatasService addAndUpdateDatasService;
 
-    //添加新数据的页面
-    @RequestMapping("/addAmmeterInfo")
-    public String addNewDate(@Valid DataInfo dataInfo) {
+    //更新页面显示的最新数据
+    @RequestMapping("/updateAmmeterInfo")
+    public String addNewDate(DataInfo dataInfo) {
 
-        //添加一条新数据
-        addAndUpdateDatasService.insertOneData(dataInfo);
+        //更改页面显示的最新数据
+        addAndUpdateDatasService.updateOneData(dataInfo);
         System.out.print(dataInfo);
         return "showDatas";
     }
 
     //修改数据的页面
-    @RequestMapping("/updateAmmeterInfo")
+    @RequestMapping("/addAmmeterInfo")
     public String updateDate(){
         //
 

@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AddAndUpdateDatasMapper {
-    //添加一条新数据
-    void insertOneData(DataInfo dataInfo);
+    //更改页面添加的新数据
+    void updateOneData(DataInfo dataInfo);
 }

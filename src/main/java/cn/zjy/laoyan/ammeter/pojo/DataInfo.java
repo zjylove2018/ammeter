@@ -78,6 +78,9 @@ import java.util.Date;
  */
 public class DataInfo implements Serializable {
 
+    //此id是为了去数据库查询数据而设置
+    private String id;
+
     //数据ID
     private String info_id;
 
@@ -258,7 +261,13 @@ public class DataInfo implements Serializable {
     //数据创建时间
     private  String creat_time;
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getInfo_id() {
         return info_id;
@@ -744,7 +753,8 @@ public class DataInfo implements Serializable {
 
     }
 
-    public DataInfo(String info_id, String cheque_num, String worker, String modifier_date, String item_num, String payment_num, String ammeter_num, String payment_total, String isAccount, String station_type, String agreement_price, String area, String network_identity, String station_num, String station_name, String machine_room, String machine_QR, String payment_period, String befor_payment_date, String last_ammeter_num, Double now_ammeter_num, Double reality_report_num, String last_check_ammeter, String now_check_ammeter, Double multiple, Double form_price, Double finance_price, Double finance_expend_money, Double electricity_num_a, Double electricity_num_b, Double electricity_num_c, Integer electricity_num_d, Double electricity_num_price, Double move_account_money, String returned_money_count, Double gross_margin, String ammeter_type, String ammeter_discern_num, String ammeter_state, String station_state, String ammeter_address, String affiliation_company, String rent_company, String linkman, String phone, String gathering_company, String machine_room_address, String tenement_address, String remark, String affirm_pact_money, String balance_date, String contract_date, String income_date, String is_invoice, String contract_num, String invoice_type, Double tax_rate, Double tax_money, String invoice_num, String creat_time) {
+    public DataInfo(String id, String info_id, String cheque_num, String worker, String modifier_date, String item_num, String payment_num, String ammeter_num, String payment_total, String isAccount, String station_type, String agreement_price, String area, String network_identity, String station_num, String station_name, String machine_room, String machine_QR, String payment_period, String befor_payment_date, String last_ammeter_num, Double now_ammeter_num, Double reality_report_num, String last_check_ammeter, String now_check_ammeter, Double multiple, Double form_price, Double finance_price, Double finance_expend_money, Double electricity_num_a, Double electricity_num_b, Double electricity_num_c, Integer electricity_num_d, Double electricity_num_price, Double move_account_money, String returned_money_count, Double gross_margin, String ammeter_type, String ammeter_discern_num, String ammeter_state, String station_state, String ammeter_address, String affiliation_company, String rent_company, String linkman, String phone, String gathering_company, String machine_room_address, String tenement_address, String remark, String affirm_pact_money, String balance_date, String contract_date, String income_date, String is_invoice, String contract_num, String invoice_type, Double tax_rate, Double tax_money, String invoice_num, String creat_time) {
+        this.id = id;
         this.info_id = info_id;
         this.cheque_num = cheque_num;
         this.worker = worker;
@@ -810,20 +820,21 @@ public class DataInfo implements Serializable {
     @Override
     public String toString() {
         return "DataInfo{" +
-                "  info_id='" + info_id + '\'' +
+                "id='" + id + '\'' +
+                ", info_id='" + info_id + '\'' +
                 ", cheque_num='" + cheque_num + '\'' +
                 ", worker='" + worker + '\'' +
-                ", modifier_date=" + modifier_date +
+                ", modifier_date='" + modifier_date + '\'' +
                 ", item_num='" + item_num + '\'' +
                 ", payment_num='" + payment_num + '\'' +
-                ", ammeter_num=" + ammeter_num +
+                ", ammeter_num='" + ammeter_num + '\'' +
                 ", payment_total='" + payment_total + '\'' +
                 ", isAccount='" + isAccount + '\'' +
                 ", station_type='" + station_type + '\'' +
                 ", agreement_price='" + agreement_price + '\'' +
                 ", area='" + area + '\'' +
                 ", network_identity='" + network_identity + '\'' +
-                ", station_num=" + station_num +
+                ", station_num='" + station_num + '\'' +
                 ", station_name='" + station_name + '\'' +
                 ", machine_room='" + machine_room + '\'' +
                 ", machine_QR='" + machine_QR + '\'' +
@@ -832,8 +843,8 @@ public class DataInfo implements Serializable {
                 ", last_ammeter_num='" + last_ammeter_num + '\'' +
                 ", now_ammeter_num=" + now_ammeter_num +
                 ", reality_report_num=" + reality_report_num +
-                ", last_check_ammeter=" + last_check_ammeter +
-                ", now_check_ammeter=" + now_check_ammeter +
+                ", last_check_ammeter='" + last_check_ammeter + '\'' +
+                ", now_check_ammeter='" + now_check_ammeter + '\'' +
                 ", multiple=" + multiple +
                 ", form_price=" + form_price +
                 ", finance_price=" + finance_price +
@@ -854,22 +865,22 @@ public class DataInfo implements Serializable {
                 ", affiliation_company='" + affiliation_company + '\'' +
                 ", rent_company='" + rent_company + '\'' +
                 ", linkman='" + linkman + '\'' +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
                 ", gathering_company='" + gathering_company + '\'' +
                 ", machine_room_address='" + machine_room_address + '\'' +
                 ", tenement_address='" + tenement_address + '\'' +
                 ", remark='" + remark + '\'' +
                 ", affirm_pact_money='" + affirm_pact_money + '\'' +
-                ", balance_date=" + balance_date +
-                ", contract_date=" + contract_date +
-                ", income_date=" + income_date +
+                ", balance_date='" + balance_date + '\'' +
+                ", contract_date='" + contract_date + '\'' +
+                ", income_date='" + income_date + '\'' +
                 ", is_invoice='" + is_invoice + '\'' +
                 ", contract_num='" + contract_num + '\'' +
                 ", invoice_type='" + invoice_type + '\'' +
                 ", tax_rate=" + tax_rate +
                 ", tax_money=" + tax_money +
                 ", invoice_num='" + invoice_num + '\'' +
-                ", creat_time=" + creat_time +
+                ", creat_time='" + creat_time + '\'' +
                 '}';
     }
 }

@@ -136,15 +136,6 @@
                     });
                 })
             </script>
-
-            <!--修改数据-->
-            <script type="text/javascript">
-                $(function(){
-                    $("#updateAmmeterInfo").click(function(){
-                        $('#addAndUpdateInfoWindow').window('open');
-                    });
-                })
-            </script>
         </div>
     </div>
 </div>
@@ -159,14 +150,6 @@
                     <td colspan="8" style="color: darkblue"><font size="6">最近添加的表数据详情</font>
                         <!--提供隐藏域 装载id -->
                         <input type="hidden" name="id" />
-                    </td>
-                </tr>
-                <tr >
-                    <td style="align-content: center">
-                        <font size="3" color="orange">电表图片</font>
-                    </td>
-                    <td style="align-content: center">
-                        <font size="3" color="orange">其他信息</font>
                     </td>
                 </tr>
                 <tr>
@@ -190,7 +173,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <font color="#006400">电表表数</font>:<span>${dataInfo.ammeter_num }</span>
+                        <font color="#006400">电表数量</font>:<span>${dataInfo.ammeter_num }</span>
                     </td>
                     <td colspan="2">
                         <font color="#006400">缴费次数</font>:<span>${dataInfo.payment_total }</span>
@@ -214,10 +197,10 @@
                 </tr>
                    <tr>
                        <td colspan="2">
-                           <font color="#006400">上期表数</font>:<span>${dataInfo.last_ammeter_num }</span>
+                           <font color="#006400">上期电量</font>:<span>${dataInfo.last_ammeter_num }</span>
                        </td>
                        <td colspan="2">
-                           <font color="#006400">本期表数</font>:<span>${dataInfo.now_ammeter_num }</span>
+                           <font color="#006400">本期电量</font>:<span>${dataInfo.now_ammeter_num }</span>
                        </td>
                    </tr>
                    <tr>
@@ -260,7 +243,7 @@
                            <font color="#006400">出租单位</font>: <span>${dataInfo.rent_company }</span>
                        </td>
                        <td colspan="2">
-                           <font color="red">报移动电</font>:<span>${dataInfo.ammeter_discern_num }</span>
+                           <font color="red">报移动电</font>:<span>${dataInfo.finance_expend_money }</span>
                        </td>
                    </tr>
                    <tr>
@@ -322,8 +305,6 @@
         </div>
     </div>
 </div>
-
-
 
 </body>
 </html>

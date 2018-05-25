@@ -54,6 +54,36 @@
             $("#jvForm").attr("method","post").submit();
         }
     </script>
+
+    <!--显示更多数据-->
+    <script type="text/javascript">
+        $(function(){
+            $("#showMore").click(function(){
+                window.location.href="/ammeter/showMoreInfo?aaa=xxxxx&bbb=xxxxx";
+                $('#showMoreInfo').window('open');
+            });
+        })
+    </script>
+
+    <%--$("按钮").click(function(){
+    $.ajax({
+    type: "POST",
+    url: "接口地址",
+    data: 传到服务器的数据
+    })
+    .done(function( msg ) {
+    做个弹框，解析返回的msg，插进弹框
+    });
+    });
+    $('#demo_id').click(function(){
+            var $pop_window=$('#pop_window');
+            $.post(exampleRequestUrl,{data:data},
+            function(callbackData){
+            $pop_window.show().html(callbackdata)
+                })
+            })
+            --%>
+
 </head>
 <body class="easyui-layout">
 <div data-options="region:'west',split:true,title:'主菜单'" style="width:200px;">
@@ -129,13 +159,13 @@
                     <thead class="pn-lthead">
                     <tr>
                         <th width="20"><input type="checkbox" onclick="checkBox('ids',this.checked)"/></th>
-                        <th>预交日期</th>
-                        <th>报移动电</th>
-                        <th>基础倍率</th>
+                        <th>数据ID号</th>
+                        <th>缴费人员</th>
+                        <th>更新日期</th>
+                        <th>缴费次数</th>
                         <th>抄表单价</th>
-                        <th>财务支出</th>
-                        <th>移动结账</th>
-                        <th>毛利国税</th>
+                        <th>甲方人员</th>
+                        <th>联系方式</th>
                         <th>操作选项</th>
                     </tr>
                     </thead>
@@ -143,20 +173,20 @@
                     <c:forEach items="${dataInfoList }" var="brand" >
                         <tr bgcolor="#ffffff" onmouseout="this.bgColor='#ffffff'" onmouseover="this.bgColor='#eeeeee'">
                             <td><input type="checkbox" value="${brand.info_id }" name="ids"/></td>
-                            <td align="center">${brand.befor_payment_date } </td>
-                            <td align="center">${brand.reality_report_num } </td>
+                            <td align="center">${brand.info_id } </td>
+                            <td align="center">${brand.worker } </td>
                             <%--<td align="center"><img width="40" height="40" src="${brand.imgUrl }"/></td>--%>
-                            <td align="center">${brand.multiple } </td>
-                            <td align="center">${brand.form_price } </td>
+                            <td align="center">${brand.modifier_date } </td>
+                            <td align="center">${brand.payment_total } </td>
                             <%--<td align="center">
                                 <c:if test="${brand.isDisplay == true }">是</c:if>
                                 <c:if test="${brand.isDisplay == false }">否</c:if>
                             </td>--%>
-                            <td align="center">${brand.finance_expend_money } </td>
-                            <td align="center">${brand.move_account_money } </td>
-                            <td align="center">${brand. gross_margin } </td>
+                            <td align="center">${brand.form_price } </td>
+                            <td align="center">${brand.linkman } </td>
+                            <td align="center">${brand.phone } </td>
                             <td align="center">
-                                <a class="pn-opt" href="/brand/toEdit.do?id=${brand.info_id }">更多..</a> | <a class="pn-opt" href="/brand/toEdit.do?id=${brand.info_id }">修改</a> | <a class="pn-opt" onclick="if(!confirm('您确定删除吗？')) {return false;}" href="/brand/deleteBrandById.do?id=${brand.info_id }">删除</a>
+                                <input type="button" value="更多.." id="showMore" onclick="javascript:showMore(${brand.id })" > | <a class="pn-opt" href="/brand/toEdit.do?id=${brand.info_id }">修改</a> | <a class="pn-opt" onclick="if(!confirm('您确定删除吗？')) {return false;}" href="/brand/deleteBrandById.do?id=${brand.info_id }">删除</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -175,124 +205,135 @@
                         </td>
                     </tr>
                     </tbody>
-                    <%--<tr>
-                            <td rowspan="10" >
-                                <input type="image" src="img/login.jpg" width="300px" height="360px"/>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">数据ID号</font>:<span>${dataInfo.info_id }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">缴费人员</font>:<span>${dataInfo.worker }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <font color="#006400">更新日期</font>:<span>${dataInfo.modifier_date }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">项目编号</font>:<span>${dataInfo.item_num }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <font color="#006400">电表表数</font>:<span>${dataInfo.ammeter_num }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">缴费次数</font>:<span>${dataInfo.payment_total }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <font color="#006400">移动结算</font>:<span>${dataInfo.isAccount }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">基站站名</font>:<span>${dataInfo.machine_room }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <font color="#006400">所属机房</font>:<span>${dataInfo.machine_room }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="red">预交日期</font>:<span>${dataInfo.befor_payment_date }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <font color="#006400">上期表数</font>:<span>${dataInfo.last_ammeter_num }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">本期表数</font>:<span>${dataInfo.now_ammeter_num }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <font color="#006400">上期查表</font>:<span>${dataInfo.last_check_ammeter }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">本期查表</font>: <span>${dataInfo.now_check_ammeter }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <font color="red">基础倍率</font>:<span>${dataInfo.multiple }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="red">抄表单价</font>:<span>${dataInfo.form_price }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <font color="red">财务支出</font>: <span>${dataInfo.finance_expend_money }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="red">移动结算</font>:<span>${dataInfo.move_account_money }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <font color="#006400">回款次数</font>:<span>${dataInfo.returned_money_count }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="red">毛利国税</font>:<span>${dataInfo.gross_margin }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <font color="#006400">表识别号</font>:<span>${dataInfo.info_id }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">出租单位</font>: <span>${dataInfo.rent_company }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="red">报移动电</font>:<span>${dataInfo.ammeter_discern_num }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <font color="#006400">甲方人员</font>:<span>${dataInfo.linkman }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">收款单位</font>:<span>${dataInfo.gathering_company}</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">联系方式</font>:<span>${dataInfo.phone }</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <font color="#006400">电表地址</font>:<span>${dataInfo.ammeter_address }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">电表类型</font>:<span>${dataInfo.ammeter_type }</span>
-                            </td>
-                            <td colspan="2">
-                                <font color="#006400">详情备注</font>:<span>${dataInfo.remark }</span>
-                            </td>
-                        </tr>--%>
                 </table>
             </form>
+        </div>
+    </div>
+</div>
+
+<!--显示更多数据窗口-->
+<div id="showMoreInfo" class="easyui-window" title="显示更多数据" collapsible="false" minimizable="false" modal="true" closed="true" resizable="false" maximizable="false" icon="icon-save" style="width: 1200px; height: 600px; padding: 5px;
+        background: #fafafa">
+    <div class="easyui-layout" fit="true">
+        <div region="center" border="false" style="padding: 10px; background: #fff; border: 1px solid #ccc;">
+            <table id="ameeterId2" class="table-edit" width="80%" align="center">
+                <tr>
+                    <td rowspan="10" >
+                        <input type="image" src="img/login.jpg" width="300px" height="360px"/>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">数据ID号</font>:<span>${dataInfo.info_id }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">缴费人员</font>:<span>${dataInfo.worker }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <font color="#006400">更新日期</font>:<span>${dataInfo.modifier_date }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">项目编号</font>:<span>${dataInfo.item_num }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <font color="#006400">电表数量</font>:<span>${dataInfo.ammeter_num }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">缴费次数</font>:<span>${dataInfo.payment_total }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <font color="#006400">移动结算</font>:<span>${dataInfo.isAccount }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">基站站名</font>:<span>${dataInfo.machine_room }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <font color="#006400">所属机房</font>:<span>${dataInfo.machine_room }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="red">预交日期</font>:<span>${dataInfo.befor_payment_date }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <font color="#006400">上期电量</font>:<span>${dataInfo.last_ammeter_num }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">本期电量</font>:<span>${dataInfo.now_ammeter_num }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <font color="#006400">上期查表</font>:<span>${dataInfo.last_check_ammeter }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">本期查表</font>: <span>${dataInfo.now_check_ammeter }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <font color="red">基础倍率</font>:<span>${dataInfo.multiple }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="red">抄表单价</font>:<span>${dataInfo.form_price }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <font color="red">财务支出</font>: <span>${dataInfo.finance_expend_money }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="red">移动结算</font>:<span>${dataInfo.move_account_money }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <font color="#006400">回款次数</font>:<span>${dataInfo.returned_money_count }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="red">毛利国税</font>:<span>${dataInfo.gross_margin }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <font color="#006400">表识别号</font>:<span>${dataInfo.info_id }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">出租单位</font>: <span>${dataInfo.rent_company }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="red">报移动电</font>:<span>${dataInfo.finance_expend_money }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <font color="#006400">甲方人员</font>:<span>${dataInfo.linkman }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">收款单位</font>:<span>${dataInfo.gathering_company}</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">联系方式</font>:<span>${dataInfo.phone }</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <font color="#006400">电表地址</font>:<span>${dataInfo.ammeter_address }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">电表类型</font>:<span>${dataInfo.ammeter_type }</span>
+                    </td>
+                    <td colspan="2">
+                        <font color="#006400">详情备注</font>:<span>${dataInfo.remark }</span>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

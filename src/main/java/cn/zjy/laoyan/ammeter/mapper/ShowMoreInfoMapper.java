@@ -5,12 +5,11 @@ import org.springframework.stereotype.Repository;
 
 /*
  * @author dayong
- * @date 2018/5/21 0021 下午 3:13
+ * @date 2018/5/23 0023 下午 4:34
  */
-
 @Repository
-public interface ShowNewInfoMapper {
-    //要让页面加载完成后显示最近添加的一条数据
-    DataInfo getNewInfo();
+public interface ShowMoreInfoMapper {
 
+    //根据id查询出所有的数据并返回到页面上
+    DataInfo selectInfo(Integer id);
 }

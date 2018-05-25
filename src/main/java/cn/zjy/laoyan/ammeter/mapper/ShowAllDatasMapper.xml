@@ -3,7 +3,7 @@
 <mapper namespace="cn.zjy.laoyan.ammeter.mapper.ShowAllDatasMapper">
     <select id="selectSignificanceInfo" resultType="DataInfo">
         select
-            info_id,cheque_num,worker,modifier_date,item_num,payment_num,
+            id,info_id,cheque_num,worker,modifier_date,item_num,payment_num,
             ammeter_num,payment_total,isAccount,station_type,
             agreement_price,area,network_identity,station_num,station_name,
             machine_room,machine_QR,payment_period,befor_payment_date,last_ammeter_num,
