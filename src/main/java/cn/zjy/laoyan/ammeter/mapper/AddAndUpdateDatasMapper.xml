@@ -198,4 +198,36 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+
+    <!--添加一条新数据-->
+    <insert id="insertNewDate" parameterType="DataInfo">
+        insert into ammeter_info
+            (info_id,cheque_num,worker,modifier_date,item_num,
+            payment_num,ammeter_num,payment_total,isAccount,station_type,
+            agreement_price,area,network_identity,station_num,station_name,
+            machine_room,machine_QR,payment_period,befor_payment_date,last_ammeter_num,
+            now_ammeter_num,reality_report_num,last_check_ammeter,now_check_ammeter,multiple,
+            form_price,finance_price,finance_expend_money,electricity_num_a,electricity_num_b,
+            electricity_num_c,electricity_num_d,electricity_num_price,move_account_money,returned_money_count,
+            gross_margin,ammeter_type,ammeter_discern_num,ammeter_state,station_state,
+            ammeter_address,affiliation_company,rent_company,linkman,phone,
+            gathering_company,machine_room_address,tenement_address,remark,affirm_pact_money,
+            balance_date,contract_date,income_date,is_invoice,contract_num,
+            invoice_type,tax_rate,tax_money,invoice_num,creat_time)
+        values
+            (
+            #{info_id,jdbcType=VARCHAR},#{cheque_num,jdbcType=VARCHAR},#{worker,jdbcType=VARCHAR},#{modifier_date,jdbcType=VARCHAR},#{item_num,jdbcType=VARCHAR},#{payment_num,jdbcType=VARCHAR},
+            #{ammeter_num,jdbcType=VARCHAR},#{payment_total,jdbcType=VARCHAR},#{isAccount,jdbcType=VARCHAR},#{station_type,jdbcType=VARCHAR},
+            #{agreement_price,jdbcType=VARCHAR},#{area,jdbcType=VARCHAR},#{network_identity,jdbcType=VARCHAR},#{station_num,jdbcType=VARCHAR},#{station_name,jdbcType=VARCHAR},
+            #{machine_room,jdbcType=VARCHAR},#{machine_QR,jdbcType=VARCHAR},#{payment_period,jdbcType=VARCHAR},#{befor_payment_date,jdbcType=VARCHAR},#{last_ammeter_num,jdbcType=DOUBLE},
+            #{now_ammeter_num,jdbcType=DOUBLE},#{reality_report_num,jdbcType=DOUBLE},#{last_check_ammeter,jdbcType=VARCHAR},#{now_check_ammeter,jdbcType=VARCHAR},#{multiple,jdbcType=DOUBLE},
+            #{form_price,jdbcType=DOUBLE},#{finance_price,jdbcType=DOUBLE},#{finance_expend_money,jdbcType=DOUBLE},#{electricity_num_a,jdbcType=DOUBLE},#{electricity_num_b,jdbcType=DOUBLE},
+            #{electricity_num_c,jdbcType=DOUBLE},#{electricity_num_d,jdbcType=VARCHAR},#{electricity_num_price,jdbcType=DOUBLE},#{move_account_money,jdbcType=DOUBLE},#{returned_money_count,jdbcType=VARCHAR},
+            #{gross_margin,jdbcType=DOUBLE},#{ammeter_type,jdbcType=VARCHAR},#{ammeter_discern_num,jdbcType=VARCHAR},#{ammeter_state,jdbcType=VARCHAR},#{station_state,jdbcType=VARCHAR},
+            #{ammeter_address,jdbcType=VARCHAR},#{affiliation_company,jdbcType=VARCHAR},#{rent_company,jdbcType=VARCHAR},#{linkman,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},
+            #{gathering_company,jdbcType=VARCHAR},#{machine_room_address,jdbcType=VARCHAR},#{tenement_address,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{affirm_pact_money,jdbcType=VARCHAR},
+            #{balance_date,jdbcType=VARCHAR},#{contract_date,jdbcType=VARCHAR},#{income_date,jdbcType=VARCHAR},#{is_invoice,jdbcType=VARCHAR},#{contract_num,jdbcType=VARCHAR},
+            #{invoice_type,jdbcType=VARCHAR},#{tax_rate,jdbcType=DOUBLE},#{tax_money,jdbcType=DOUBLE},#{invoice_num,jdbcType=VARCHAR},#{creat_time,jdbcType=VARCHAR}
+            )
+    </insert>
 </mapper>

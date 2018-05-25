@@ -33,11 +33,12 @@ public class AddAndUpdateDatasController{
         return "showDatas";
     }
 
-    //修改数据的页面
+    //添加页面
     @RequestMapping("/addAmmeterInfo")
-    public String updateDate(){
-        //
+    public String updateDate(DataInfo dataInfo){
+        //添加一条新数据
+        addAndUpdateDatasService.insertNewDate(dataInfo);
 
-        return "";
+        return "showDatas";
     }
 }

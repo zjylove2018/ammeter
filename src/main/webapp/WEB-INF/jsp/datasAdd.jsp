@@ -77,7 +77,7 @@
 <div id="shuju" data-options="region:'center',title:'数据显示区'">
     <!-- 展示折叠面板 fit:自适应填充父容器-->
     <div id="myTabs" class="easyui-tabs" data-options="fit:true">
-        <div id="zheshisha" title="最近的数据" data-options="iconCls:'icon-save'">
+        <div id="zheshisha" title="添加新数据" data-options="iconCls:'icon-save'">
             <!-- 电表数据展示主页面-->
             <form id="jvForm" action="/ammeter/addAmmeterInfo" method="post" >
                 <table id="ameeterId" class="table-edit" width="80%" align="center">

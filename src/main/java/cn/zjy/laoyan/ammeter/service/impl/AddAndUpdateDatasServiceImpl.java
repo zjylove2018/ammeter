@@ -20,4 +20,10 @@ public class AddAndUpdateDatasServiceImpl implements AddAndUpdateDatasService {
     public void updateOneData(DataInfo dataInfo) {
         addAndUpdateDatasMapper.updateOneData(dataInfo);
     }
+
+    //添加一条新数据
+    @Override
+    public void insertNewDate(DataInfo dataInfo) {
+        addAndUpdateDatasMapper.insertNewDate(dataInfo);
+    }
 }

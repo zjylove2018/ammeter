@@ -13,4 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface AddAndUpdateDatasMapper {
     //更改页面添加的新数据
     void updateOneData(DataInfo dataInfo);
+
+    //添加一条新数据
+    void insertNewDate(DataInfo dataInfo);
 }
