@@ -17,7 +17,6 @@
     <script type="text/javascript" src="../../locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="../../js/showDatas.js"></script>
 
-    <!--${pageContext.request.contextPath}-->
     <!--显示时间 -->
     <script>
         function mytime(){
@@ -63,6 +62,19 @@
         }
     </script>
 
+    <script type="text/javascript">
+        $(function(){
+            $("#cleanNewDatas").click(function(){
+                $.messager
+                    .confirm('系统提示','您确定要删除本条记录吗?',function(isConfirm) {
+                        if (isConfirm) {
+                            location.href = '/ammeter/deleteNewDatas?id=${dataInfo.id }';
+                        }
+                    });
+            });
+        })
+    </script>
+
 </head>
 <body class="easyui-layout">
 <div data-options="region:'north',border:false" style="height:60px; width: 300px ; background:#B3DFDA;padding:10px">
@@ -88,6 +100,10 @@
                 </li>
                 <li>
                     <input type="button" value="修改数据" onclick="window.location.href='/ammeter/updateDatas'"/>
+                </li>
+                <li>
+                    <input id="cleanNewDatas" type="button" value="删除数据" />
+                    <%--<a class="pn-opt" name="id" onclick="if(!confirm('您确定删除吗？确定就真没了!!!')) {return false;}" href="/ammeter/deleteNewDatas?id=${dataInfo.id }">删除数据</a>--%>
                 </li>
                 <li>
                     <input type="button" value="所有数据" onclick="window.location.href='/ammeter/showAllDatas'"/>

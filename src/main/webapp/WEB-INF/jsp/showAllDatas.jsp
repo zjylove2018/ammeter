@@ -55,16 +55,6 @@
         }
     </script>
 
-    <!--显示更多数据-->
-    <script type="text/javascript">
-        $(function(){
-            $("#showMore").click(function(){
-                window.location.href="/ammeter/showMoreInfo?aaa=xxxxx&bbb=xxxxx";
-                $('#showMoreInfo').window('open');
-            });
-        })
-    </script>
-
     <%--$("按钮").click(function(){
     $.ajax({
     type: "POST",
@@ -83,6 +73,31 @@
                 })
             })
             --%>
+    <script type="text/javascript">
+        $(function(){
+            $("#chargePassWord").click(function(){
+                $('#editPwdWindow').window('open');
+            });
+        })
+    </script>
+
+    <%--全选全不选--%>
+    <script>
+        //编写函数
+        function selectAll(obj){
+            //获取表头复选框装填
+            var status=obj.checked
+            //获取其他的复选框
+            var checkboxes=document.getElementsByClassName("itemSelect");
+            //遍历
+            for(var i=0;i<checkboxes.length;i++){
+                //获取每一个
+                var checkbox=checkboxes[i];
+                //状态保持一致
+                checkbox.checked=status
+            }
+        }
+    </script>
 
 </head>
 <body class="easyui-layout">
@@ -158,7 +173,7 @@
                     </tr>
                     <thead class="pn-lthead">
                     <tr>
-                        <th width="20"><input type="checkbox" onclick="checkBox('ids',this.checked)"/></th>
+                        <th width="20"><input type="checkbox" onclick="selectAll(this)"/></th>
                         <th>数据ID号</th>
                         <th>缴费人员</th>
                         <th>更新日期</th>
@@ -172,7 +187,7 @@
                     <tbody class="pn-ltbody">
                     <c:forEach items="${dataInfoList }" var="brand" >
                         <tr bgcolor="#ffffff" onmouseout="this.bgColor='#ffffff'" onmouseover="this.bgColor='#eeeeee'">
-                            <td><input type="checkbox" value="${brand.info_id }" name="ids"/></td>
+                            <td><input type="checkbox" class="itemSelect"/></td>
                             <td align="center">${brand.info_id } </td>
                             <td align="center">${brand.worker } </td>
                             <%--<td align="center"><img width="40" height="40" src="${brand.imgUrl }"/></td>--%>
@@ -186,7 +201,7 @@
                             <td align="center">${brand.linkman } </td>
                             <td align="center">${brand.phone } </td>
                             <td align="center">
-                                <input type="button" value="更多.." id="showMore" onclick="javascript:showMore(${brand.id })" > | <a class="pn-opt" href="/brand/toEdit.do?id=${brand.info_id }">修改</a> | <a class="pn-opt" onclick="if(!confirm('您确定删除吗？')) {return false;}" href="/brand/deleteBrandById.do?id=${brand.info_id }">删除</a>
+                                <input type="button" value="更多.."  onclick="javascript:window.location.href='/ammeter/showMoreInfo?id='+${brand.id }" > | <a class="pn-opt" href="/brand/toEdit.do?id=${brand.id }">修改</a> | <a class="pn-opt" onclick="if(!confirm('您确定删除吗？')) {return false;}" href="/brand/deleteBrandById.do?id=${brand.id }">删除</a>
                             </td>
                         </tr>
                     </c:forEach>

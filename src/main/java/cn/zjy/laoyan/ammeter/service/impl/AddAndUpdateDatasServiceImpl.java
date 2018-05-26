@@ -6,6 +6,9 @@ import cn.zjy.laoyan.ammeter.service.AddAndUpdateDatasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /*
  * @author dayong
  * @date 2018/5/23 0023 上午 10:03
@@ -24,6 +27,12 @@ public class AddAndUpdateDatasServiceImpl implements AddAndUpdateDatasService {
     //添加一条新数据
     @Override
     public void insertNewDate(DataInfo dataInfo) {
+        //设置新添加数据的时间
+        Date currentTime = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String creat_time = formatter.format(currentTime);
+        dataInfo.setCreat_time(creat_time);
+
         addAndUpdateDatasMapper.insertNewDate(dataInfo);
     }
 }
