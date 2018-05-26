@@ -21,11 +21,6 @@
     <script type="text/javascript" src="../../js/showDatas.js"></script>
 
     <script type="text/javascript">
-        function checkBox(name,checked){
-            /* 全选,全不选 */
-            $("input[name="+name+"]").attr("checked",checked);
-        }
-
         /* 批量删除 ,物理删除*/
         function optDelete(name,isDisplay,pageNo){
             var size=$("input[name=ids]:checked").size();
@@ -55,24 +50,6 @@
         }
     </script>
 
-    <%--$("按钮").click(function(){
-    $.ajax({
-    type: "POST",
-    url: "接口地址",
-    data: 传到服务器的数据
-    })
-    .done(function( msg ) {
-    做个弹框，解析返回的msg，插进弹框
-    });
-    });
-    $('#demo_id').click(function(){
-            var $pop_window=$('#pop_window');
-            $.post(exampleRequestUrl,{data:data},
-            function(callbackData){
-            $pop_window.show().html(callbackdata)
-                })
-            })
-            --%>
     <script type="text/javascript">
         $(function(){
             $("#chargePassWord").click(function(){
@@ -201,7 +178,7 @@
                             <td align="center">${brand.linkman } </td>
                             <td align="center">${brand.phone } </td>
                             <td align="center">
-                                <input type="button" value="更多.."  onclick="javascript:window.location.href='/ammeter/showMoreInfo?id='+${brand.id }" > | <a class="pn-opt" href="/brand/toEdit.do?id=${brand.id }">修改</a> | <a class="pn-opt" onclick="if(!confirm('您确定删除吗？')) {return false;}" href="/brand/deleteBrandById.do?id=${brand.id }">删除</a>
+                                <input type="button" value="更多.."  onclick="javascript:window.location.href='/ammeter/showMoreInfo?id='+${brand.id }" > | <a class="pn-opt" href="/ammeter/updateMoreInfoById?id=${brand.id }">修改</a> | <a class="pn-opt" onclick="if(!confirm('您确定删除吗？')) {return false;}" href="/ammeter/deleteBrandById?id=${brand.id }">删除</a>
                             </td>
                         </tr>
                     </c:forEach>

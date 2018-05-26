@@ -23,7 +23,7 @@ public class AddAndUpdateDatasController{
     @Autowired
     private AddAndUpdateDatasService addAndUpdateDatasService;
 
-    //更新页面显示的最新数据
+    //修改页面显示的最新数据
     @RequestMapping("/updateAmmeterInfo")
     public String addNewDate(DataInfo dataInfo) {
 
@@ -38,7 +38,6 @@ public class AddAndUpdateDatasController{
     public String updateDate(DataInfo dataInfo){
         //添加一条新数据
         addAndUpdateDatasService.insertNewDate(dataInfo);
-
         return "showDatas";
     }
 }
