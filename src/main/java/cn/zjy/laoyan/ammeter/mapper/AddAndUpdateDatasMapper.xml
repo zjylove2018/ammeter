@@ -213,7 +213,7 @@
             ammeter_address,affiliation_company,rent_company,linkman,phone,
             gathering_company,machine_room_address,tenement_address,remark,affirm_pact_money,
             balance_date,contract_date,income_date,is_invoice,contract_num,
-            invoice_type,tax_rate,tax_money,invoice_num,creat_time)
+            invoice_type,tax_rate,tax_money,invoice_num,creat_time,isShow)
         values
             (
             #{info_id,jdbcType=VARCHAR},#{cheque_num,jdbcType=VARCHAR},#{worker,jdbcType=VARCHAR},#{modifier_date,jdbcType=VARCHAR},#{item_num,jdbcType=VARCHAR},#{payment_num,jdbcType=VARCHAR},
@@ -227,7 +227,7 @@
             #{ammeter_address,jdbcType=VARCHAR},#{affiliation_company,jdbcType=VARCHAR},#{rent_company,jdbcType=VARCHAR},#{linkman,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},
             #{gathering_company,jdbcType=VARCHAR},#{machine_room_address,jdbcType=VARCHAR},#{tenement_address,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{affirm_pact_money,jdbcType=VARCHAR},
             #{balance_date,jdbcType=VARCHAR},#{contract_date,jdbcType=VARCHAR},#{income_date,jdbcType=VARCHAR},#{is_invoice,jdbcType=VARCHAR},#{contract_num,jdbcType=VARCHAR},
-            #{invoice_type,jdbcType=VARCHAR},#{tax_rate,jdbcType=DOUBLE},#{tax_money,jdbcType=DOUBLE},#{invoice_num,jdbcType=VARCHAR},#{creat_time,jdbcType=VARCHAR}
+            #{invoice_type,jdbcType=VARCHAR},#{tax_rate,jdbcType=DOUBLE},#{tax_money,jdbcType=DOUBLE},#{invoice_num,jdbcType=VARCHAR},#{creat_time,jdbcType=VARCHAR},#{isShow,jdbcType=VARCHAR}
             )
     </insert>
 </mapper>

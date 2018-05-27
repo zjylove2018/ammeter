@@ -6,5 +6,7 @@
             ammeter_info
         where
             id = #{id,jdbcType=INTEGER}
+        and
+            isShow = "10"
     </select>
 </mapper>

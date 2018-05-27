@@ -62,7 +62,7 @@
         }
     </script>
 
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         $(function(){
             $("#cleanNewDatas").click(function(){
                 $.messager
@@ -73,7 +73,7 @@
                     });
             });
         })
-    </script>
+    </script>--%>
 
 </head>
 <body class="easyui-layout">
@@ -102,8 +102,10 @@
                     <input type="button" value="修改数据" onclick="window.location.href='/ammeter/updateDatas'"/>
                 </li>
                 <li>
-                    <input id="cleanNewDatas" type="button" value="删除数据" />
-                    <%--<a class="pn-opt" name="id" onclick="if(!confirm('您确定删除吗？确定就真没了!!!')) {return false;}" href="/ammeter/deleteNewDatas?id=${dataInfo.id }">删除数据</a>--%>
+                    <input type="button" value="删除数据" onclick="if(!confirm('您确定删除吗？确定就真没了!!!')) {return false;};window.location.href='/ammeter/deleteNewDatas?id=${dataInfo.id }'"/>
+                </li>
+                <li>
+                    <input type="button" value="隐藏数据" onclick="if(!confirm('您确定隐藏吗？确定就不显示了.')) {return false;};window.location.href='/ammeter/updateNewDatas?id=${dataInfo.id }'"/>
                 </li>
                 <li>
                     <input type="button" value="所有数据" onclick="window.location.href='/ammeter/showAllDatas'"/>

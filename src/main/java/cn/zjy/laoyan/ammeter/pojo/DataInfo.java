@@ -261,6 +261,9 @@ public class DataInfo implements Serializable {
     //数据创建时间
     private  String creat_time;
 
+    //此字段供逻辑删除使用 10默认代表的是显示 20代表的是隐藏
+    String isShow = "10";
+
     public String getId() {
         return id;
     }
@@ -747,6 +750,14 @@ public class DataInfo implements Serializable {
 
     public void setCreat_time(String creat_time) {
         this.creat_time = creat_time;
+    }
+
+    public String getIsShow() {
+        return isShow;
+    }
+
+    public void setIsShow(String isShow) {
+        this.isShow = isShow;
     }
 
     public DataInfo() {

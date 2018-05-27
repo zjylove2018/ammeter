@@ -17,6 +17,8 @@
             invoice_type,tax_rate,tax_money,invoice_num,creat_time
         from
             ammeter_info
+        WHERE
+            isShow = "10"
         GROUP BY
             creat_time
         ORDER BY

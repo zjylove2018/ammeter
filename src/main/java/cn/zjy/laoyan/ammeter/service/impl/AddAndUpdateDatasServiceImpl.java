@@ -31,6 +31,9 @@ public class AddAndUpdateDatasServiceImpl implements AddAndUpdateDatasService {
         Date currentTime = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String creat_time = formatter.format(currentTime);
+        //设置一个默认字段:10代表的是显示数据,新添加的数据默认是显示出来的
+        String isShow = "10";
+        dataInfo.setIsShow(isShow);
         dataInfo.setCreat_time(creat_time);
 
         addAndUpdateDatasMapper.insertNewDate(dataInfo);
