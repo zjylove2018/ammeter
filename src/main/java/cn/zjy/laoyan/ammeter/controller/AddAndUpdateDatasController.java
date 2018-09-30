@@ -31,6 +31,7 @@ public class AddAndUpdateDatasController{
         addAndUpdateDatasService.updateOneData(dataInfo);
         System.out.print(dataInfo);
         System.out.println("李超.试试行了不");
+        System.out.println("李超.试试行了不1111111");
         return "showDatas";
     }
 
