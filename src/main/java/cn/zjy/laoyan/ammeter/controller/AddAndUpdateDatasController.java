@@ -30,6 +30,7 @@ public class AddAndUpdateDatasController{
         //更改页面显示的最新数据
         addAndUpdateDatasService.updateOneData(dataInfo);
         System.out.print(dataInfo);
+        System.out.println("李超.试试行了不");
         return "showDatas";
     }
 
